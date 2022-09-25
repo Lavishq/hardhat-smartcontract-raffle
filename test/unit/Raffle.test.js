@@ -161,7 +161,7 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
                               const raffleState = await raffle.getRaffleState()
                               const endingTimeStamp = await raffle.getLatestTimestamp()
                               const numPlayers = await raffle.getNumberOfPlayers()
-                              const winnerEndingBalance = await accounts[i].getBalance()
+                              const winnerEndingBalance = await accounts[1].getBalance()
 
                               assert.equal(numPlayers.toString(), "0")
                               assert.equal(raffleState.toString(), "0")
@@ -186,7 +186,7 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
                       // below, we wil fire the event, and the listeneerr will pick it up, and resolve
                       const tx = await raffle.performUpkeep([])
                       const txReceipt = await tx.wait(1)
-                      const winnerStartingBalance = await accounts[i].getBalance()
+                      const winnerStartingBalance = await accounts[1].getBalance()
                       await vrfCoordinatorV2Mock.fulfillRandomWords(
                           txReceipt.events[1].args.requestId,
                           raffle.address
