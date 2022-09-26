@@ -23,18 +23,16 @@ module.exports = {
     defaultNetwork: "hardhat",
     networks: {
         hardhat: {
+            chainId: 31337,
+            blockConfirmations: 1,
+        },
+        localhost: {
             // If you want to do some forking, uncomment this
             // forking: {
             //   url: MAINNET_RPC_URL
             // }
             chainId: 31337,
             blockConfirmations: 1,
-        },
-        rinkeby: {
-            chainId: 4,
-            blockConfirmations: 6,
-            url: RINKEBY_RPC_URL,
-            accounts: [PRIVATE_KEY],
         },
         goerli: {
             url: GOERLI_RPC_URL,
@@ -52,7 +50,6 @@ module.exports = {
             chainId: 137,
         },
     },
-
     etherscan: {
         // yarn hardhat verify --network <NETWORK> <CONTRACT_ADDRESS> <CONSTRUCTOR_PARAMETERS>
         apiKey: {
